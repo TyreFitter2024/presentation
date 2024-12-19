@@ -1,11 +1,11 @@
-```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Get a Grip Mobile Tyres - Marketing Plan</title>
   <style>
+    /* Existing CSS */
     :root {
       --color-background: #222831;
       --color-container: #393e46;
@@ -270,7 +270,7 @@
 <main>
   <section id="strategy" class="active">
     <div class="content">
-      <div class="section-content" style="padding: 1.25rem;">
+      <div class="section-content">
         <h2>Digital Marketing Strategy</h2>
         <img src="/img/1.png" alt="Chichester Mobile Tyre Service Area" class="section-image">
         <div class="text">
@@ -287,6 +287,7 @@
           </ul>
         </div>
       </div>
+    </div>
     </div>
   </section>
 
@@ -401,7 +402,6 @@
       </div>
     </div>
   </section>
-
   <section id="summary">
     <div class="content">
       <div class="section-content">
@@ -442,10 +442,9 @@
 
           <h3>Implementation Strategy</h3>
           <ul>
-            <li>100% Focus on Google Ads for immediate results</li>
-            <li>Organic Facebook group posting for community presence</li>
+            <li>Focus on Google Ads for immediate results</li>
+            <li>Organic Facebook group posting for free Leads.</li>
             <li>Weekly performance monitoring and optimization</li>
-            <li>Monthly strategy review and adjustment</li>
           </ul>
         </div>
       </div>
@@ -469,6 +468,7 @@
   let currentIndex = 0;
   const lastIndex = sections.length - 1;
 
+  // Initialize first section and dot
   updateActive();
 
   // Desktop scrolling logic
@@ -498,12 +498,14 @@
     const deltaY = endY - startY;
     if (deltaY < -50 && currentIndex < lastIndex) {
       currentIndex++;
+      updateActive();
     } else if (deltaY > 50 && currentIndex > 0) {
       currentIndex--;
+      updateActive();
     }
-    updateActive();
   });
 
+  // Update active section and dot
   function updateActive() {
     sections.forEach((section, index) => {
       if (index === currentIndex) {
@@ -533,22 +535,6 @@
   // Close menu when clicking a link
   document.querySelectorAll('.nav-menu a').forEach(link => {
     link.addEventListener('click', () => {
-      navMenu.classList.remove('active');
-      navToggle.textContent = '▼';
-    });
-  });
-
-  // Handle nav link clicks
-  document.querySelectorAll('.nav-menu a').forEach(link => {
-    link.addEventListener('click', (e) => {
-      e.preventDefault();
-      const targetId = link.getAttribute('href').replace('#', '');
-      const targetSection = document.getElementById(targetId);
-      const targetIndex = Array.from(sections).indexOf(targetSection);
-      if (targetIndex >= 0) {
-        currentIndex = targetIndex;
-        updateActive();
-      }
       navMenu.classList.remove('active');
       navToggle.textContent = '▼';
     });
