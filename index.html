@@ -1,11 +1,11 @@
+```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Get a Grip Mobile Tyres - Marketing Plan</title>
   <style>
-    /* Existing CSS */
     :root {
       --color-background: #222831;
       --color-container: #393e46;
@@ -288,7 +288,6 @@
         </div>
       </div>
     </div>
-    </div>
   </section>
 
   <section id="targeting">
@@ -402,6 +401,7 @@
       </div>
     </div>
   </section>
+
   <section id="summary">
     <div class="content">
       <div class="section-content">
@@ -469,7 +469,6 @@
   let currentIndex = 0;
   const lastIndex = sections.length - 1;
 
-  // Initialize first section and dot
   updateActive();
 
   // Desktop scrolling logic
@@ -499,14 +498,12 @@
     const deltaY = endY - startY;
     if (deltaY < -50 && currentIndex < lastIndex) {
       currentIndex++;
-      updateActive();
     } else if (deltaY > 50 && currentIndex > 0) {
       currentIndex--;
-      updateActive();
     }
+    updateActive();
   });
 
-  // Update active section and dot
   function updateActive() {
     sections.forEach((section, index) => {
       if (index === currentIndex) {
