@@ -537,6 +537,22 @@
       navToggle.textContent = '▼';
     });
   });
+
+  // Handle nav link clicks
+  document.querySelectorAll('.nav-menu a').forEach(link => {
+    link.addEventListener('click', (e) => {
+      e.preventDefault();
+      const targetId = link.getAttribute('href').replace('#', '');
+      const targetSection = document.getElementById(targetId);
+      const targetIndex = Array.from(sections).indexOf(targetSection);
+      if (targetIndex >= 0) {
+        currentIndex = targetIndex;
+        updateActive();
+      }
+      navMenu.classList.remove('active');
+      navToggle.textContent = '▼';
+    });
+  });
 </script>
 </body>
 </html>
