@@ -454,6 +454,53 @@
 </main>
 
 <script>
+  // Section and progress tracking
+const sections = document.querySelectorAll('section');
+const dots = document.querySelectorAll('.progress-dot');
+let currentIndex = 0;
+
+// Touch handling variables
+let touchStartY = 0;
+let touchEndY = 0;
+
+// Initialize first section and dot
+updateActive();
+
+// Handle mouse wheel events (desktop)
+window.addEventListener('wheel', (e) => {
+    if (e.deltaY > 0 && currentIndex < 6) {
+        currentIndex++;
+    } else if (e.deltaY < 0 && currentIndex > 0) {
+        currentIndex--;
+    }
+    updateActive();
+});
+
+// Handle touch events (mobile)
+window.addEventListener('touchstart', (e) => {
+    touchStartY = e.touches[0].clientY;
+});
+
+window.addEventListener('touchmove', (e) => {
+    e.preventDefault(); // Prevent default scrolling
+}, { passive: false });
+
+window.addEventListener('touchend', (e) => {
+    touchEndY = e.changedTouches[0].clientY;
+    const touchDiff = touchStartY - touchEndY;
+
+    // Detect swipe direction (using a threshold of 50px)
+    if (Math.abs(touchDiff) > 50) {
+        if (touchDiff > 0 && currentIndex < 6) {
+            // Swipe up
+            currentIndex++;
+        } else if (touchDiff < 0 && currentIndex > 0) {
+            // Swipe down
+            currentIndex--;
+        }
+        updateActive();
+    }
+});
   // Toggle navigation menu
   const navToggle = document.querySelector('.nav-toggle');
   const navMenu = document.querySelector('.nav-menu');
