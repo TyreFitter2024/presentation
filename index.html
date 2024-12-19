@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Get a Grip Mobile Tyres - Marketing Plan</title>
+  <style>
+    :root {
+      --color-background: #222831;
+      --color-container: #393e46;
+      --color-highlight: #f96d00;
+      --color-text: #f2f2f2;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-snap-type: y mandatory;
+    }
+
+    body {
+      font-family: system-ui, sans-serif;
+      line-height: 1.5;
+      overflow-x: hidden;
+      background-color: var(--color-background);
+      color: var(--color-text);
+    }
+
+    .site-header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      background: var(--color-container);
+      box-shadow: 0 2px 4px rgba(0,0,0,0.3);
+      z-index: 100;
+    }
+
+    .header-content {
+      padding: 1rem;
+      text-align: center;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .title-section {
+      margin-bottom: 0.5rem;
+    }
+
+    h1 {
+      font-size: 1.25rem;
+      color: var(--color-highlight);
+      margin-bottom: 0.25rem;
+    }
+
+    .subtitle {
+      font-size: 0.875rem;
+      color: var(--color-text);
+    }
+
+    .nav-toggle {
+      position: absolute;
+      right: 1rem;
+      top: 1rem;
+      background: none;
+      border: none;
+      font-size: 1.5rem;
+      cursor: pointer;
+      color: var(--color-highlight);
+    }
+
+    .nav-menu {
+      display: none;
+      padding: 1rem;
+      background: var(--color-container);
+    }
+
+    .nav-menu.active {
+      display: block;
+    }
+
+    .nav-menu ul {
+      list-style: none;
+      text-align: center;
+    }
+
+    .nav-menu a {
+      display: block;
+      padding: 0.75rem;
+      color: var(--color-text);
+      text-decoration: none;
+      font-weight: 500;
+    }
+
+    .nav-menu a:hover {
+      color: var(--color-highlight);
+    }
+
+    .progress-tracker {
+      position: fixed;
+      right: 1.5rem;
+      top: 50%;
+      transform: translateY(-50%);
+      z-index: 90;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      align-items: center;
+    }
+
+    .progress-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: var(--color-container);
+      transition: all 0.3s ease;
+      cursor: pointer;
+    }
+
+    .progress-dot.active {
+      background: var(--color-highlight);
+      transform: scale(1.3);
+    }
+
+    section {
+      scroll-snap-align: start;
+      scroll-snap-stop: always;
+      height: 100vh;
+      position: relative;
+    }
+
+    .content {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      padding-top: 5rem;
+      background: var(--color-background);
+      opacity: 0;
+      transform: translateX(100%);
+      transition: all 0.5s ease;
+    }
+
+    section.active .content {
+      opacity: 1;
+      transform: translateX(0);
+    }
+
+    section.prev .content {
+      opacity: 0;
+      transform: translateX(-100%);
+    }
+
+    .section-content {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 1.25rem;
+      background: var(--color-container);
+      border-radius: 1rem;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.2);
+      font-size: 0.9rem;
+    }
+
+    h2 {
+      color: var(--color-highlight);
+      font-size: 1.25rem;
+      margin-bottom: 1rem;
+    }
+
+    h3 {
+      color: var(--color-text);
+      font-size: 1rem;
+      margin: 0.75rem 0;
+    }
+
+    .section-image {
+      width: 100%;
+      max-width: 400px;
+      height: auto;
+      margin: 0.75rem auto;
+      display: block;
+      border-radius: 0.5rem;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.3);
+    }
+
+    ul {
+      padding-left: 1.25rem;
+      margin: 0.5rem 0;
+    }
+
+    li {
+      margin-bottom: 0.4rem;
+    }
+
+    .highlight-text {
+      color: var(--color-highlight);
+      font-weight: bold;
+      margin-bottom: 0.75rem;
+    }
+
+    @media (min-width: 768px) {
+      .section-content {
+        padding: 2rem;
+        font-size: 1rem;
+      }
+
+      h1 {
+        font-size: 1.5rem;
+      }
+
+      h2 {
+        font-size: 1.5rem;
+      }
+
+      h3 {
+        font-size: 1.25rem;
+      }
+    }
+  </style>
+</head>
+<body>
+<header class="site-header">
+  <div class="header-content">
+    <div class="title-section">
+      <h1>Get a Grip Mobile Tyres</h1>
+      <div class="subtitle">Marketing Plan</div>
+    </div>
+    <button class="nav-toggle" aria-label="Toggle menu">▼</button>
+    <nav class="nav-menu">
+      <ul>
+        <li><a href="#strategy">Marketing Strategy</a></li>
+        <li><a href="#targeting">Audience Targeting</a></li>
+        <li><a href="#channels">Marketing Channels</a></li>
+        <li><a href="#budget">Budget Allocation</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<div class="progress-tracker">
+  <div class="progress-dot" data-index="0"></div>
+  <div class="progress-dot" data-index="1"></div>
+  <div class="progress-dot" data-index="2"></div>
+  <div class="progress-dot" data-index="3"></div>
+</div>
+
+<main>
+  <section id="strategy" class="active">
+    <div class="content">
+      <div class="section-content" style="padding: 1.25rem;">
+        <h2>Digital Marketing Strategy</h2>
+        <img src="/img/1.png" alt="Chichester Mobile Tyre Service Area" class="section-image">
+        <div class="text">
+          <h3>Service Area: Chichester + 20 Mile Radius</h3>
+          <p>Marketing Investment: £250 per week</p>
+
+          <h3>Core Business Goals</h3>
+          <ul>
+            <li>Drive consistent growth with 10-15 quality tyre fitting enquiries per week within our Chichester service radius</li>
+            <li>Optimize and strengthen our Google Business presence to boost local search visibility</li>
+            <li>Maintain customer acquisition costs below £25, with planned reduction to £15 through campaign optimization</li>
+            <li>Strengthen local connections through active participation in community Facebook groups</li>
+            <li>Expand brand recognition into Portsmouth and surrounding key markets over the next 12 months</li>
+          </ul>
+        </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="targeting">
+    <div class="content">
+      <div class="section-content">
+        <h2>Target Audience</h2>
+        <img src="/img/2.png" alt="Target demographic analysis" class="section-image">
+        <p>Primary audience segments in Portsmouth area:</p>
+        <ul>
+          <li>Mobile device users within 20-mile service radius</li>
+          <li>Prioritise emergency tyre replacement services</li>
+          <li>booked tyre replacement customers</li>
+          <li>fleet management and taxi companies</li>
+          <li>Partner garages requiring additional support services</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section id="audience-stats">
+    <div class="content">
+      <div class="section-content">
+        <h2>Audience Statistics</h2>
+        <div class="stats-content">
+          <ul>
+            <li>Target audience of approximately 800,000 people within 20-mile radius covering:</li>
+            <li>Portsmouth (205,000 residents)</li>
+            <li>Southampton (250,000 residents)</li>
+            <li>Chichester (30,000 residents)</li>
+            <li>Fareham (40,000 residents)</li>
+            <li>Other major towns including Waterlooville, Havant, Gosport, and Petersfield</li>
+          </ul>
+          <img src="/img/map.png" alt="Service coverage area map" class="section-image">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="budget">
+    <div class="content">
+      <div class="section-content">
+        <h2>Budget Allocation</h2>
+        <img src="/img/4.png" alt="Budget allocation" class="section-image">
+        <p>Weekly Marketing Budget: £250</p>
+        <ul>
+          <li>Google Ads: £250 (100%)
+            <ul>
+              <li>Emergency keywords: £175</li>
+              <li>General service keywords: £50.00</li>
+              <li>Funnel Website: £25</li>
+              <li>Predicted CPA: £20-25 per conversion</li>
+            </ul>
+          </li>
+          <li>Facebook Advertising: £0 (0%)
+            <ul>
+              <li>Group Posting</li>
+              <li>Regular updates</li>
+            </ul>
+          </li>
+        </ul>
+        <p>Projected Weekly Results:</p>
+        <ul>
+          <li>Total conversions: 10-17 new customers</li>
+          <li>Average CPA: £22-31</li>
+          <li>Total weekly impressions (Brand Building): 2,500-3,000 people</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section id="campaign">
+    <div class="content">
+      <div class="section-content">
+        <h2>Campaign and CPC</h2>
+        <img src="/img/3.png" alt="Campaign and CPC analysis" class="section-image">
+
+        <div class="campaign-details">
+          <h3>Emergency Mobile Tyre Service</h3>
+          <p class="budget-allocation">70% Budget Allocation</p>
+          <ul>
+            <li>Keywords: "Mobile Tyres near me", "24hr Mobile Tyres"</li>
+            <li>CPC Range: £1.34 - £3.50</li>
+            <li>Weekly Clicks: 35-45</li>
+            <li>Conversion Rate: 15%</li>
+            <li>Weekly Conversions: 7-10</li>
+            <li>CPA Range: £9 - £23</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="scheduled-service">
+    <div class="content">
+      <div class="section-content">
+        <h2>Scheduled Service Campaign</h2>
+        <img src="/img/3.png" alt="Scheduled service campaign analysis" class="section-image">
+
+        <div class="campaign-details">
+          <h3>Scheduled Tyre Service</h3>
+          <p class="budget-allocation">30% Budget Allocation (£75)</p>
+          <ul>
+            <li>Keywords: "tyres fitted at home", "Home Tyres"</li>
+            <li>CPC Range: £0.80 - £2.00</li>
+            <li>Weekly Clicks: 40-50</li>
+            <li>Conversion Rate: 14%</li>
+            <li>Weekly Conversions: 5-7</li>
+            <li>CPA Range: £10 - £15</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+
+</main>
+
+<script>
+  // Toggle navigation menu
+  const navToggle = document.querySelector('.nav-toggle');
+  const navMenu = document.querySelector('.nav-menu');
+
+  navToggle.addEventListener('click', () => {
+    navMenu.classList.toggle('active');
+    navToggle.textContent = navMenu.classList.contains('active') ? '▲' : '▼';
+  });
+
+  // Section and progress tracking
+  const sections = document.querySelectorAll('section');
+  const dots = document.querySelectorAll('.progress-dot');
+  let currentIndex = 0;
+
+  // Initialize first section and dot
+  updateActive();
+
+  // Handle scroll events
+  window.addEventListener('wheel', (e) => {
+    if (e.deltaY > 0 && currentIndex < sections.length - 1) {
+      currentIndex++;
+    } else if (e.deltaY < 0 && currentIndex > 0) {
+      currentIndex--;
+    }
+    updateActive();
+  });
+
+  // Update active section and dot
+  function updateActive() {
+    sections.forEach((section, index) => {
+      if (index === currentIndex) {
+        section.classList.add('active');
+        section.classList.remove('prev');
+      } else if (index < currentIndex) {
+        section.classList.add('prev');
+        section.classList.remove('active');
+      } else {
+        section.classList.remove('active', 'prev');
+      }
+    });
+
+    dots.forEach((dot, index) => {
+      dot.classList.toggle('active', index === currentIndex);
+    });
+  }
+
+  // Handle dot clicks
+  dots.forEach((dot, index) => {
+    dot.addEventListener('click', () => {
+      currentIndex = index;
+      updateActive();
+    });
+  });
+
+  // Close menu when clicking a link
+  document.querySelectorAll('.nav-menu a').forEach(link => {
+    link.addEventListener('click', () => {
+      navMenu.classList.remove('active');
+      navToggle.textContent = '▼';
+    });
+  });
+</script>
+</body>
+</html>
