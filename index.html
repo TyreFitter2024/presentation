@@ -467,13 +467,14 @@
   const sections = document.querySelectorAll('section');
   const dots = document.querySelectorAll('.progress-dot');
   let currentIndex = 0;
+  const lastIndex = sections.length - 1;
 
   // Initialize first section and dot
   updateActive();
 
-  // Handle scroll events (desktop)
+  // Desktop scrolling logic
   window.addEventListener('wheel', (e) => {
-    if (e.deltaY > 0 && currentIndex < 6) {
+    if (e.deltaY > 0 && currentIndex < lastIndex) {
       currentIndex++;
     } else if (e.deltaY < 0 && currentIndex > 0) {
       currentIndex--;
@@ -481,26 +482,25 @@
     updateActive();
   });
 
-  // Handle touch events (mobile)
+  // Mobile touch logic
   let startY = 0;
   let endY = 0;
 
   window.addEventListener('touchstart', (e) => {
     startY = e.touches[0].clientY;
+    endY = startY;
   });
 
   window.addEventListener('touchmove', (e) => {
     endY = e.touches[0].clientY;
   });
 
-  window.addEventListener('touchend', (e) => {
+  window.addEventListener('touchend', () => {
     const deltaY = endY - startY;
-    if (deltaY < -50 && currentIndex < 6) {
-      // Swipe up
+    if (deltaY < -50 && currentIndex < lastIndex) {
       currentIndex++;
       updateActive();
     } else if (deltaY > 50 && currentIndex > 0) {
-      // Swipe down
       currentIndex--;
       updateActive();
     }
